@@ -1,0 +1,112 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit(addressForm.value)" class="formulairo">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Inscripción</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Carnet" formControlName="carnet">
+                        <mat-error *ngIf="addressForm.controls['carnet'].hasError('required')">
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Primer Nombre" formControlName="nombre">
+                        <mat-error *ngIf="addressForm.controls['nombre'].hasError('required')">
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Segudo Nombre" formControlName="segundo_nombre">
+                        <mat-error *ngIf="addressForm.controls['segundo_nombre'].hasError('required')">
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Primer Apellido" formControlName="apellido">
+                        <mat-error *ngIf="addressForm.controls['apellido'].hasError('required')">
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Segudo Apellido" formControlName="segundo_apellido">
+                        <mat-error *ngIf="addressForm.controls['segundo_apellido'].hasError('required')">
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="telefono" formControlName="telefono">
+                        <mat-error *ngIf="addressForm.controls['telefono'].hasError('required')">
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Fecha de nacimiento</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="fecha_nacimiento">
+                        <mat-error *ngIf="addressForm.controls['fecha_nacimiento'].hasError('required')">
+                            <strong>required</strong>
+                        </mat-error>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <textarea matInput placeholder="Carrera" formControlName="carrera"></textarea>
+                        <mat-error *ngIf="addressForm.controls['carrera'].hasError('required')">
+                            <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-select placeholder="Genero Poetico" formControlName="genero_poesia">
+                            <mat-option *ngFor="let generos of genero_poesia" [value]="generos.name">
+                                {{ generos.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-radio-group formControlName="genero">
+                        <mat-radio-button value="masculino">Masculino</mat-radio-button>
+                        <mat-radio-button value="femenino">Femenino</mat-radio-button>
+                        <mat-error *ngIf="addressForm.controls['genero'].hasError('required')">
+                            State is <strong>required</strong>
+                        </mat-error>
+                    </mat-radio-group>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
